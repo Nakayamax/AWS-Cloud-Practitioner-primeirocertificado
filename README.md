@@ -1,7 +1,8 @@
 # AWS-Cloud-Practitioner -  Primeiro certificado AWS
 
 
-Olá Seja bem vindo!
+Olá Seja bem vindo(a)!
+
 Esses foram os meus estudos para passar no Aws Practitioner
 
-Introdução ao AWS
+##Introdução ao AWS
