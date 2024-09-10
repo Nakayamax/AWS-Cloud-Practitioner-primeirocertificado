@@ -269,3 +269,254 @@ Monitorar com CloudWatch (Opcional): Monitoramento em tempo real.
 
 Receber Notificações SNS (Opcional): Alertas sobre novos logs.
 
+
+_________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+O Que São Tags?
+
+Tags são rótulos que você adiciona aos recursos da AWS (como instâncias EC2) para organização e gerenciamento. Cada tag tem uma chave e um valor (por exemplo, Ambiente=Produção).
+
+Características das Tags
+Atribuição:
+
+Só pode adicionar tags depois que o recurso é criado.
+Chaves e valores de tags diferenciam maiúsculas de minúsculas.
+Tags com prefixo aws: são automáticas e não podem ser alteradas ou removidas.
+Você pode adicionar até 50 tags por recurso.
+
+Tags Comuns:
+
+Exemplos: Ambiente (produção, teste), Aplicativo, Departamento, Centro de Custos.
+Ferramentas de Gerenciamento:
+
+AWS Config: Verifica se as tags necessárias estão aplicadas.
+IAM Policies: Força o uso de tags específicas quando você cria recursos.
+
+
+Práticas Recomendadas
+
+Tags Relevantes: Crie tags que ajudem a organizar e gerenciar seus recursos.
+
+Consistência: Use um formato padrão para suas tags.
+
+Automatização: Utilize ferramentas para gerenciar e pesquisar tags automaticamente.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Gerenciamento de custos e práticas recomendadas
+
+![image](https://github.com/user-attachments/assets/17133fee-d223-492e-9d1d-cdd8384a3f90)
+
+
+Gerenciamento e Otimização de Custos na AWS
+Definir Orçamentos Personalizados:
+
+Crie orçamentos para monitorar e controlar seus gastos.
+Ajuste seus recursos para se adequar ao que você realmente precisa.
+Escolher Instâncias Apropriadas:
+
+Instâncias T2/T3: Boas para cargas de trabalho com desempenho intermitente.
+Instâncias Reservadas: Economize ao se comprometer com instâncias de longa duração.
+Instâncias Spot: Use para tarefas temporárias e obtenha descontos significativos.
+Considerar Modelos de Computação Sem Servidor:
+
+AWS Lambda: Pague apenas pelo tempo de computação usado e evite custos de servidores ociosos.
+Usar Serviços Gerenciados:
+
+Amazon RDS e S3: Reduza custos operacionais com serviços que não exigem gerenciamento contínuo.
+Utilizar o AWS Trusted Advisor:
+
+Receba recomendações para reduzir custos, melhorar desempenho e segurança.
+Encontrar e Eliminar Desperdícios:
+
+Amazon CloudWatch: Monitore a utilização dos recursos e identifique os ociosos.
+AWS Cost Explorer: Analise os custos por projeto e descubra onde economizar.
+Automatizar o Gerenciamento de Recursos:
+
+Stopinator: Use scripts para automatizar o desligamento de instâncias não usadas fora do horário de trabalho.
+Ferramentas e Serviços de Custo:
+
+AWS Bills: Detalhes das suas faturas.
+AWS Cost Explorer: Visualize e analise seus custos.
+AWS Budgets: Defina e monitore seus orçamentos.
+AWS Cost and Usage Reports: Relatórios detalhados de uso e custo.
+AWS Trusted Advisor: Receba conselhos para otimizar custos e desempenho.
+
+![image](https://github.com/user-attachments/assets/4295b873-6fbf-4741-b9bc-6d0f296cbffa)
+
+
+AWS Cost Explorer
+
+Visualizar Dados: Veja seus gastos dos últimos 13 meses.
+Previsão de Gastos: Estime quanto você pode gastar nos próximos 3 meses.
+Recomendações de Instâncias: Receba sugestões sobre quais instâncias reservadas comprar para economizar.
+Faturamento Consolidado: Se você usa várias contas, pode ver os custos de todas elas em um só lugar, com detalhes diários e mensais por conta.
+
+
+
+![image](https://github.com/user-attachments/assets/7d8194fa-a92b-4f7a-ae62-23c59e6a3c3c)
+
+>> O script Stopinator é uma ferramenta usada para parar instâncias do Amazon EC2 em um determinado horário ou com base em certas condições. A seguir, apresento um guia simplificado sobre como usar o Stopinator.
+
+O que é o Stopinator?
+Stopinator é um script que automatiza o processo de parada de instâncias do EC2. Ele pode ser configurado para parar instâncias em horários específicos, com base em tags, ou outras condições definidas pelo usuário. É útil para economizar custos e gerenciar instâncias que não precisam estar em execução o tempo todo.
+
+Aws trusted advisor > verificar 
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Estratégia de construção da AMI
+
+
+![image](https://github.com/user-attachments/assets/e6cfc6e5-541a-4217-a16f-aabe5ac95649)
+
+O que é uma AMI?
+AMI (Amazon Machine Image) é uma imagem de máquina fornecida pela AWS que contém todas as informações necessárias para iniciar uma instância do Amazon EC2 (Elastic Compute Cloud).
+
+Componentes da AMI:
+
+Sistema Operacional: O sistema operacional (por exemplo, Linux ou Windows) que será executado na instância.
+
+Aplicações e Configurações: Software, aplicativos e configurações pré-instaladas que você deseja na instância.
+
+Dados: Dados e arquivos necessários para a operação da aplicação ou serviço.
+
+Funcionalidade:
+
+Iniciar Instâncias: Você usa uma AMI para criar e iniciar novas instâncias do EC2 com a configuração especificada.
+
+Consistência e Reutilização: Permite criar várias instâncias com a mesma configuração inicial, facilitando a escalabilidade e a replicação de ambientes.
+Criação e Gerenciamento:
+
+Criação:
+
+Você pode criar uma AMI a partir de uma instância existente, que inclui o sistema operacional, software e configurações. Isso pode ser feito através do Console da AWS, AWS CLI, ou API.
+
+Cópia:
+
+AMIs são específicas para a região onde foram criadas. Se você precisar usar a AMI em outra região, é necessário copiá-la para essa nova região.
+
+Criptografia:
+
+Se sua AMI contém dados sensíveis, você pode criptografar os volumes de armazenamento (snapshots) associados.
+
+Custos:
+
+Snapshots: Quando uma AMI é criada, ela gera snapshots dos volumes de armazenamento, e você será cobrado pelo armazenamento desses snapshots até que você exclua a AMI.
+
+Uso de AMIs:
+
+Instâncias Idênticas: Se você precisa de várias instâncias com a mesma configuração, você pode lançar novas instâncias a partir da AMI.
+
+Escalabilidade: AMIs facilitam o aumento da capacidade e a replicação de ambientes, garantindo que todas as instâncias iniciadas tenham uma configuração idêntica.
+
+Exemplo Prático:
+
+Se você configurar um servidor web com uma aplicação e deseja criar várias instâncias desse servidor, você pode criar uma AMI dessa instância configurada. Sempre que precisar de uma nova instância com a mesma configuração, você simplesmente inicia uma instância EC2 a partir dessa AMI.
+
+Em resumo, uma AMI é uma ferramenta crucial para criar e gerenciar instâncias EC2, oferecendo uma maneira eficiente de padronizar e replicar ambientes na AWS.
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Modelos de inicialização do Amazon EC2
+
+O que é um Modelo de Inicialização?
+
+Um Modelo de Inicialização é um recurso no Amazon EC2 que armazena configurações para iniciar instâncias. Ele facilita e padroniza a criação de novas instâncias com as mesmas configurações.
+
+Principais Componentes:
+
+Configurações Armazenadas:
+
+ID da Imagem de Máquina da Amazon (AMI)
+Tipo de instância (ex.: t2.micro)
+Sub-rede
+Par de chaves
+Grupo de segurança (opcional)
+
+Benefícios:
+
+Simplificação: Armazena todas as configurações de inicialização para que você não precise especificá-las toda vez que iniciar uma nova instância.
+
+Gerenciamento Eficiente: Facilita o uso com EC2 Auto Scaling, Spot Fleet, Instâncias Spot e Sob Demanda.
+
+Consistência: Ajuda a implementar padrões e práticas recomendadas, reduzindo erros e melhorando a segurança.
+
+Redução de Custos: Ajuda a controlar e gerenciar melhor os custos.
+
+Versões do Modelo de Inicialização:
+
+Versões: Você pode criar várias versões de um modelo de inicialização. Cada versão pode ter diferentes configurações.
+
+Versão Padrão: Por padrão, a primeira versão do modelo é usada, mas você pode definir qualquer versão como padrão.
+
+Escolha da Versão: Ao iniciar uma instância, você pode escolher qual versão do modelo usar.
+
+Exemplo de Uso:
+
+Criar um Modelo: Defina as configurações, como o tipo de instância e a AMI.
+
+Criar Versões: Atualize as configurações em novas versões conforme necessário.
+
+Inicializar Instâncias: Use o modelo de inicialização para criar instâncias com as configurações predefinidas.
+
+Resumo Final: Modelos de Inicialização facilitam a criação e a gestão de instâncias do EC2, garantindo consistência e eficiência ao definir e reutilizar configurações.
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Infraestrutura como código
+
+Infraestrutura como Código (IaC)
+Objetivo: Aprender sobre infraestrutura como código (IaC) e como ela ajuda a gerenciar recursos de forma eficiente.
+
+O que é IaC?
+
+Infraestrutura como Código (IaC) é uma prática que usa código para automatizar o provisionamento e gerenciamento de recursos de infraestrutura.
+
+Benefícios:
+
+Consistência e Confiabilidade: Garante que a infraestrutura seja provisionada de forma repetível e consistente.
+
+Redução de Erros: Minimiza erros manuais e diferenças na configuração.
+
+AWS CloudFormation:
+
+O que é?: 
+
+Um serviço da AWS que permite criar e gerenciar recursos de infraestrutura usando arquivos de template em código.
+
+Usos:
+
+Criar ambientes idênticos para testes ou recuperação.
+
+Reduzir custos criando e destruindo ambientes temporários.
+
+Gerenciamento de Configuração:
+
+Após o Provisionamento: Após a infraestrutura ser criada, você precisa gerenciar configurações e fazer atualizações.
+Ferramentas:
+
+AWS Systems Manager: Automatiza tarefas e gerencia a configuração de forma centralizada.
+
+AWS OpsWorks for Chef Automate: Fornece uma solução para automação de configuração e gerenciamento de recursos.
+
+Principais Pontos:
+
+Use IaC para automatizar o provisionamento de recursos de forma confiável.
+
+O AWS CloudFormation é uma ferramenta chave para IaC na AWS.
+
+Após o provisionamento, utilize ferramentas como AWS Systems Manager e AWS OpsWorks para gerenciar e configurar a infraestrutura.
+
+Resumo: IaC permite a automação e consistência no gerenciamento de infraestrutura, com o AWS CloudFormation facilitando a criação de recursos. Para gerenciar configurações após a criação, utilize o AWS Systems Manager e o AWS OpsWorks.
