@@ -52,3 +52,68 @@ gerida pelo provedor.
 Mais próximo de SaaS: Menor complexidade no gerenciamento, pois o provedor cuida de tudo, e você apenas utiliza 
 o software.
 
+
+
+Integração do serviço da AWS com o Athena
+
+![image](https://github.com/user-attachments/assets/0a02d273-7ee4-4223-a39c-7b0ac59ef257)
+
+Visão Geral do Amazon Athena
+Amazon Athena é um serviço interativo de consultas SQL que facilita a análise de dados diretamente no Amazon S3. Ele elimina a necessidade de processos complexos de ETL (extração, transformação e carregamento) e paga apenas pelas consultas executadas.
+
+Benefícios
+
+Sem Servidor: Não há necessidade de configurar e gerenciar servidores.
+Paga Apenas pelas Consultas: Cobre apenas pelas consultas executadas.
+Resultados Rápidos: A maioria dos resultados é retornada em segundos e processa grandes conjuntos de dados com facilidade.
+Fluxo simplificado de integração 
+
+Armazenar Dados - exemplo de uso !
+
+Amazon S3: Coloque seus dados no Amazon S3 em formatos como CSV, JSON, Parquet, etc.
+Definir o Esquema
+
+AWS Glue (opcional): Use um Glue Crawler para catalogar os dados e definir o esquema. Alternativamente, defina o esquema manualmente no Athena.
+Amazon Athena: Crie uma tabela no Athena que aponta para o local dos dados no S3.
+Consultar Dados
+
+Amazon Athena: Use SQL para consultar dados diretamente no S3. Exemplos de SQL:
+sql
+Copiar código
+[SELECT * FROM tableName WHERE columnName = 'value';]
+
+Visualização de Resultados: Os resultados são exibidos no Editor de Consultas do Athena e podem ser exportados como arquivos CSV.
+Integrações com Outros Serviços da AWS
+
+AWS CloudTrail: Consulte logs de atividades da AWS.
+Application Load Balancer: Analise logs de tráfego e desempenho.
+Amazon VPC: Investigue logs de tráfego de rede e padrões de uso.
+Passos para Configuração no Amazon Athena
+Criar um Bucket no Amazon S3:
+
+Carregue seus dados no S3.
+Definir o Esquema:
+
+Navegue até o Amazon Athena no Console AWS.
+Crie um banco de dados e uma tabela usando SQL, apontando para o bucket do S3.
+Exemplo de comando SQL para criar uma tabela:
+
+sql
+Copiar código
+CREATE EXTERNAL TABLE IF NOT EXISTS nome_da_tabela (
+    coluna1 tipo,
+    coluna2 tipo
+    ...
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 's3://bucket-nome/pasta/';
+Executar Consultas SQL:
+
+No Editor de Consultas do Athena, escreva e execute consultas SQL.
+Integrações:
+
+CloudTrail: Crie uma tabela para logs de CloudTrail e consulte diretamente no Athena.
+Application Load Balancer: Crie uma tabela para logs e consulte para analisar o tráfego.
+Amazon VPC: Crie uma tabela para logs de fluxo e analise padrões de tráfego de rede.
