@@ -520,3 +520,27 @@ O AWS CloudFormation é uma ferramenta chave para IaC na AWS.
 Após o provisionamento, utilize ferramentas como AWS Systems Manager e AWS OpsWorks para gerenciar e configurar a infraestrutura.
 
 Resumo: IaC permite a automação e consistência no gerenciamento de infraestrutura, com o AWS CloudFormation facilitando a criação de recursos. Para gerenciar configurações após a criação, utilize o AWS Systems Manager e o AWS OpsWorks.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Introdução ao JSON e ao YAML
+
+
+JSON:
+
+Mais detalhado, com chaves e aspas.
+Menos legível por humanos comparado ao YAML.
+Amplamente usado e fácil de analisar.
+YAML:
+
+Mais legível por humanos com menos sintaxe detalhada.
+Suporta comentários e é mais fácil de depurar.
+Usa recuo para estruturar dados e é menos verboso.
+Esses formatos são usados para armazenar e manipular dados, com YAML oferecendo uma abordagem mais amigável para leitura humana e JSON sendo mais comum em sistemas de computador. Ambos são compatíve
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
